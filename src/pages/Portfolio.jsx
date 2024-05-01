@@ -1,61 +1,67 @@
 import React from 'react';
 import Project from '../components/Project';
+import noteTakerImage from '../assets/image.png';
+import translationAppImage from '../assets/image2.png';
+import travelAppImage from '../assets/image3.png';
+import workDaySchedulerImage from '../assets/image4.png';
+import weatherDashboardImage from '../assets/image5.png';
+import justAnotherTextEditorImage from '../assets/image6.png';
+
+
 
 const Portfolio = () => {
+  const projectStyle = {
+    marginBottom: '50px', // Adds margin below each project
+  };
+
   return (
-    <div className="container mt-5">
+    <div className="container mt-4">
       <h2>Portfolio</h2>
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-4" style={projectStyle}>
           <Project
             title="Note Taker"
             description="Description of Project 1"
-            image="![Note Taker](image.png)"
+            image={noteTakerImage}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4" style={projectStyle}>
           <Project
-            title="Project 2"
+            title="Translation App"
             description="Description of Project 2"
-            image=""
+            image={translationAppImage}
           />
-        </div> <div className="container mt-5">
-      <h2>Portfolio</h2>
-      <div className="row">
-        <div className="col-md-4">
+        </div>
+        <div className="col-md-4" style={projectStyle}>
           <Project
-            title="Project 3"
+            title="Travel App"
             description="Description of Project 3"
-            image="/path/to/project1.jpg"
-          />
-        </div>
-        <div className="col-md-4">
-          <Project
-            title="Project 4"
-            description="Description of Project 4"
-            image="/path/to/project2.jpg"
+            image={travelAppImage}
           />
         </div>
       </div>
-    </div> <div className="container mt-5">
-      <h2>Portfolio</h2>
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-4" style={projectStyle}>
           <Project
-            title="Project 5"
+            title="Work Day Scheduler"
+            description="Description of Project 4"
+            image={workDaySchedulerImage}
+          />
+        </div>
+        <div className="col-md-4" style={projectStyle}>
+          <Project
+            title="Weather Dashboard"
             description="Description of Project 5"
-            image="/path/to/project1.jpg"
+            image={weatherDashboardImage}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4" style={projectStyle}>
           <Project
-            title="Project 6"
+            title="Just Another Text Editor"
             description="Description of Project 6"
-            image="/path/to/project2.jpg"
+            image={justAnotherTextEditorImage}
           />
         </div>
-      </div>
-    </div>
       </div>
     </div>
   );

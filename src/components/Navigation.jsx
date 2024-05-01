@@ -1,17 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
-const Navigation = () => {
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import About from './components/About';
+import Portfolio from './components/Portfolio';
+import Contact from './components/Contact';
+import Resume from './components/Resume';
+
+const App = () => {
   return (
-    <>
-      <nav>
-        <ul>
-          <li><Link to="/about">About Me</Link></li>
-          <li><Link to="/portfolio">Portfolio</Link></li>
-          <li><Link to="/resume">Resume</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
-      </nav>
-    </>
+    <Router>
+      <Header />
+      <Switch>
+        <Route path="/about" component={About} />
+        <Route path="/portfolio" component={Portfolio} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/resume" component={Resume} />
+        <Route path="/" exact component={About} />
+      </Switch>
+      <Footer />
+    </Router>
   );
 };
-export default Navigation;
+
+export default App;

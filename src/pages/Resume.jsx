@@ -3,8 +3,14 @@ import React from 'react';
 const Resume = () => {
   return (
     <div>
-      <h2>Resume</h2>
-      <p>This is the Resume page.</p>
+      <a href="/(<../../Eric Reyna Professional Resume.docx>)" download>Download Resume</a>
+      <ul>
+        {/* List of proficiencies */}
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Node.js</li>
+        {/* Add more as needed */}
+      </ul>
     </div>
   );
 };
