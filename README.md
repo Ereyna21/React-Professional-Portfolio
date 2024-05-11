@@ -11,10 +11,10 @@
 ## Description
 a portfolio using new React skills, which will help set me apart from other developers whose portfolios don’t use the latest technologies.
 
-## Table of Contents
+## Table of 
 - [License](#license)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Usage](#usage)Contents
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [Questions](#questions)

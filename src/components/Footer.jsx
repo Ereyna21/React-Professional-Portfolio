@@ -12,7 +12,7 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/eric-reyna-3a7269147/">LinkedIn</a>
           </div>
           <div className="col-md-4">
-            <a href="https://stackoverflow.com/users/youruserid">Stack Overflow</a>
+            <a href="https://www.facebook.com/eric.reyna.1829">FaceBook</a>
           </div>
           {/* Additional links as needed */}
         </div>
