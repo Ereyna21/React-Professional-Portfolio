@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import AboutMe from './pages/AboutMe';
-import Portfolio from './pages/Portfolio';
+import Work from './pages/Work';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
@@ -19,7 +19,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/about" element={<AboutMe />} />
-          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/work" element={<Work />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />
         </Routes>
@@ -30,3 +30,5 @@ function App() {
 }
 
 export default App;
+
+

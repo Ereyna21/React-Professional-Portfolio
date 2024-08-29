@@ -1,5 +1,15 @@
+
+
+
+
 body {
-  background-color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+  background-color: blue;
+  margin: 0;
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  min-width: 100%;
+  min-height: 100vh;
 }
 
 .footer {
@@ -9,16 +19,17 @@ body {
   width: 100%;
   background-color: #333;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
   font-size: large;
 }
 
 .container-fluid {
-  background-color: #333;
-  padding: 20px;
+  background-color: transparent;
+  padding: 10px;
   color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
   text-decoration: underline;
 }
+
 .project {
   margin-bottom: 20px; 
 }
@@ -31,7 +42,6 @@ nav ul {
   justify-content: center;
   align-items: center;
   color: #535bf2;
-  
 }
 
 .card-img-top {
@@ -40,4 +50,39 @@ nav ul {
 
 .row {
   justify-content: center;
+}
+
+.content {
+  padding: 20px;
+}
+
+.card {
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  color: white;
+}
+
+.nav-link {
+  margin-right: 1rem;
+}
+
+.nav-link:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.larger-icon {
+  font-size: 24px;
 }
