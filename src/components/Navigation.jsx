@@ -7,6 +7,7 @@ import Work from './components/Work';
 import Contact from './components/Contact';
 import Resume from './components/Resume';
 
+
 const App = () => {
   return (
     <Router>
@@ -16,7 +17,7 @@ const App = () => {
         <Route path="/work" component={Work} />
         <Route path="/contact" component={Contact} />
         <Route path="/resume" component={Resume} />
-        <Route path="/" exact component={About} />
+        <Route path="/" exact component={Home} />
       </Switch>
       <Footer />
     </Router>

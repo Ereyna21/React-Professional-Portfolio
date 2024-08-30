@@ -1,40 +1,18 @@
-// import React from 'react';
-
-// const Resume = () => {
-//   return (
-//     <div>
-//       <a href="/(<../../Eric Reyna Professional Resume.docx>)" download>Download Resume</a>
-//       <ul>
-//         {/* List of proficiencies */}
-//         <li>JavaScript</li>
-//         <li>React</li>
-//         <li>Node.js</li>
-//         {/* Add more as needed */}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default Resume;
-
-
-
 import React from 'react';
+import resumeImage from '../assets/resumeImage.png'; // Adjust the path based on where your image is located
 
 const Resume = () => {
   return (
     <div className="container mt-4">
       <h2>Resume</h2>
-      <a href="Eric Reyna Professional Resume.docx/" download className="btn btn-primary">
+      {/* Ensure the href points to the correct path in the public folder */}
+      <a href="/Eric Reyna Resume.docx" download className="btn btn-primary">
         Download Resume
       </a>
-      <h3>Proficiencies</h3>
-      <ul>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Node.js</li>
-        {/* Add more as needed */}
-      </ul>
+      
+      {/* Add the image of your resume */}
+      <h3 style={{ color: 'white' }}>Feel Free To Download A Copy Of My Resume</h3>
+      <img src={resumeImage} alt="Eric Reyna's Resume" style={{ maxWidth: '100%', height: 'auto' }} />
     </div>
   );
 };

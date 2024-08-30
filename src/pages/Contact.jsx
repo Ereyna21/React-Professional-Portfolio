@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 export default function Contact() {
@@ -27,15 +26,44 @@ export default function Contact() {
     return errors;
   };
 
-  const handleSubmit = (event) => {
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const validationErrors = validate();
+  //   if (Object.keys(validationErrors).length === 0) {
+  //     // Perform the action with the form data, like sending it to a server
+  //     console.log(formData);
+  //     setIsSubmitted(true);
+  //     // Reset form fields after submission
+  //     setFormData({ name: '', email: '', message: '' });
+  //   } else {
+  //     setErrors(validationErrors);
+  //   }
+  // };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length === 0) {
-      // Perform the action with the form data, like sending it to a server
-      console.log(formData);
-      setIsSubmitted(true);
-      // Reset form fields after submission
-      setFormData({ name: '', email: '', message: '' });
+      try {
+        const response = await fetch('http://your-backend-url/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        if (response.ok) {
+          setIsSubmitted(true);
+          setFormData({ name: '', email: '', message: '' });
+        } else {
+          // Handle error response from the server
+          console.error('Failed to send email');
+        }
+      } catch (error) {
+        // Handle network errors
+        console.error('Network error:', error);
+      }
     } else {
       setErrors(validationErrors);
     }
