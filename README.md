@@ -1,43 +1,32 @@
+# Eric Reyna - Professional Portfolio
 
-# React-Professional-Portfolio
+A responsive React portfolio presenting my background in technical support, customer experience, and full-stack web development.
 
-## License
-  <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" />
+## Highlights
 
-  This project is licensed under the MIT license.
-  
-<a href= "https://choosealicense.com/licenses/mit/">link to MIT license</a>
+- Recruiter-focused homepage and professional story
+- Dedicated skills, projects, resume, and contact pages
+- Responsive navigation and mobile-friendly layouts
+- Downloadable technology-focused resume
+- Netlify-compatible contact form
 
-## Description
-a portfolio using new React skills, which will help set me apart from other developers whose portfolios don’t use the latest technologies.
+## Built With
 
-## Table of 
-- [License](#license)
-- [Installation](#installation)
-- [Usage](#usage)Contents
-- [Contributing](#contributing)
-- [Tests](#tests)
-- [Questions](#questions)
+React, Vite, React Router, JavaScript, CSS, and Bootstrap.
 
-## Installation
-Created using vite@4.4.1, npm install all dependencies. Deploy to netlify.
+## Local Development
 
-## Usage
-Use netlify link to deploy application.
+```bash
+npm install
+npm run dev
+```
 
-## Contributing
-Eric Reyna
+## Production Build
 
-## Tests
-N/A
+```bash
+npm run build
+```
 
-## Questions
-For additional questions, you can reach me through:
-- GitHub: [Ereyna21](https://github.com/Ereyna21)
-- Email: Ereyna21075@gmail.com
+## Live Site
 
-Deployment link: 
-https://react-professional-portfolio-e21.netlify.app
-
-Repository Link:
-https://github.com/Ereyna21/React-Professional-Portfolio
+https://ericreynaportfolio.netlify.app/

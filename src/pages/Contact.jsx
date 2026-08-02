@@ -1,166 +1,86 @@
 import React, { useState } from 'react';
 
+const encode = (data) => new URLSearchParams(data).toString();
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState('idle');
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
+  const handleChange = ({ target: { name, value } }) => {
+    setFormData((current) => ({ ...current, [name]: value }));
   };
-
-  const validate = () => {
-    const errors = {};
-    if (!formData.name) errors.name = 'Name is required';
-    if (!formData.email) errors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Email address is invalid';
-    if (!formData.message) errors.message = 'Message is required';
-    return errors;
-  };
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const validationErrors = validate();
-  //   if (Object.keys(validationErrors).length === 0) {
-  //     // Perform the action with the form data, like sending it to a server
-  //     console.log(formData);
-  //     setIsSubmitted(true);
-  //     // Reset form fields after submission
-  //     setFormData({ name: '', email: '', message: '' });
-  //   } else {
-  //     setErrors(validationErrors);
-  //   }
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length === 0) {
-      try {
-        const response = await fetch('http://your-backend-url/send-email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-  
-        if (response.ok) {
-          setIsSubmitted(true);
-          setFormData({ name: '', email: '', message: '' });
-        } else {
-          // Handle error response from the server
-          console.error('Failed to send email');
-        }
-      } catch (error) {
-        // Handle network errors
-        console.error('Network error:', error);
-      }
-    } else {
-      setErrors(validationErrors);
+    setStatus('sending');
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'portfolio-contact', ...formData }),
+      });
+      setFormData({ name: '', email: '', message: '' });
+      setStatus('success');
+    } catch (error) {
+      setStatus('error');
     }
   };
 
   return (
-    <div className="contact">
-      <h2>Contact Me</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          {errors.name && <p className="error">{errors.name}</p>}
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          {errors.email && <p className="error">{errors.email}</p>}
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-          {errors.message && <p className="error">{errors.message}</p>}
-        </div>
-        <button type="submit">Send Message</button>
-      </form>
-      {isSubmitted && <p className="success">Thank you for reaching out! I will be in touch soon.</p>}
-      <style jsx>{`
-        .contact {
-          max-width: 600px;
-          margin: 0 auto;
-          padding: 2rem;
-          border: 1px solid #ccc;
-          border-radius: 10px;
-          background-color: #f9f9f9;
-        }
-        h2 {
-          text-align: center;
-          margin-bottom: 1rem;
-        }
-        .form-group {
-          margin-bottom: 1rem;
-        }
-        label {
-          display: block;
-          margin-bottom: 0.5rem;
-        }
-        input, textarea {
-          width: 100%;
-          padding: 0.5rem;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
-        .error {
-          color: red;
-          font-size: 0.875rem;
-        }
-        .success {
-          color: green;
-          text-align: center;
-          margin-top: 1rem;
-        }
-        button {
-          display: block;
-          width: 100%;
-          padding: 0.75rem;
-          border: none;
-          border-radius: 5px;
-          background-color: #007bff;
-          color: white;
-          font-size: 1rem;
-          cursor: pointer;
-        }
-        button:hover {
-          background-color: #0056b3;
-        }
-      `}</style>
-    </div>
+    <main className="contact-page">
+      <section className="page-heading">
+        <p className="page-eyebrow">Let&apos;s connect</p>
+        <h1>Have a role, project, or problem worth solving?</h1>
+        <p>
+          I am open to conversations about technical support, IT support, application support, customer success, product support, and junior development opportunities.
+        </p>
+      </section>
+
+      <section className="contact-layout">
+        <article className="contact-intro-card">
+          <p className="section-label">Start a conversation</p>
+          <h2>I would be glad to hear from you.</h2>
+          <p>
+            Send a message with a little context about the opportunity or project. I value clear communication and will respond as soon as I can.
+          </p>
+          <div className="contact-link-stack">
+            <a href="https://www.linkedin.com/in/eric-reyna-3a7269147/" target="_blank" rel="noreferrer">
+              <span>LinkedIn</span><strong>Connect professionally →</strong>
+            </a>
+            <a href="https://github.com/Ereyna21" target="_blank" rel="noreferrer">
+              <span>GitHub</span><strong>Explore my code →</strong>
+            </a>
+          </div>
+        </article>
+
+        <form
+          className="contact-form-card"
+          name="portfolio-contact"
+          method="POST"
+          data-netlify="true"
+          onSubmit={handleSubmit}
+        >
+          <input type="hidden" name="form-name" value="portfolio-contact" />
+          <div className="form-field">
+            <label htmlFor="name">Name</label>
+            <input id="name" name="name" value={formData.name} onChange={handleChange} autoComplete="name" required />
+          </div>
+          <div className="form-field">
+            <label htmlFor="email">Email</label>
+            <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} autoComplete="email" required />
+          </div>
+          <div className="form-field">
+            <label htmlFor="message">Message</label>
+            <textarea id="message" name="message" rows="7" value={formData.message} onChange={handleChange} required />
+          </div>
+          <button className="btn-primary-custom contact-submit" type="submit" disabled={status === 'sending'}>
+            {status === 'sending' ? 'Sending...' : 'Send Message'}
+          </button>
+          {status === 'success' && <p className="form-status success">Thank you. Your message has been sent.</p>}
+          {status === 'error' && <p className="form-status error">The message could not be sent. Please connect with me through LinkedIn.</p>}
+        </form>
+      </section>
+    </main>
   );
 }
