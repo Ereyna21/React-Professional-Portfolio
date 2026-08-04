@@ -2,68 +2,56 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Greeting from '../components/Greeting';
 import insuranceHeadshot from '../assets/eric-professional-headshot.jpg';
+import nextChapterImage from '../assets/next-chapter-feature.jpg';
 
-const Home = () => {
-  return (
-    <>
-      <Greeting />
+const featured = [
+  {
+    className: 'home-work-insurance',
+    label: 'Insurance business website',
+    title: 'Eric Reyna Insurance',
+    copy: 'A trust-focused React website built to educate families and generate consultation requests.',
+    url: 'https://eric-reyna-insurance.netlify.app/',
+    visual: <img src={insuranceHeadshot} alt="Eric Reyna Insurance project" />,
+  },
+  {
+    className: 'home-work-texas',
+    label: 'Service business website',
+    title: 'Texas Tough Power Wash',
+    copy: 'A bold lead-generation site with clear services, local positioning, and a working quote form.',
+    url: 'https://texas-tough-power-wash.netlify.app/',
+    visual: <div className="mini-wash-mark">TT<span>POWER WASH</span></div>,
+  },
+  {
+    className: 'home-work-chapter',
+    label: 'Boutique product website',
+    title: 'Next Chapter Creations',
+    copy: 'A warm storefront-style experience for handmade bookish gifts and custom-order inquiries.',
+    url: 'https://next-chapter-creations.netlify.app/',
+    visual: <img src={nextChapterImage} alt="Next Chapter Creations products" />,
+  },
+];
 
-      <section className="featured-project-section" aria-labelledby="featured-project-title">
-        <div className="featured-project-heading reveal-up">
-          <div>
-            <p className="section-label">Featured project</p>
-            <h2 id="featured-project-title">A real business website built to earn trust and generate leads.</h2>
-          </div>
-          <Link className="text-link" to="/work">View all projects →</Link>
-        </div>
-
-        <article className="featured-project-card reveal-up">
-          <div className="featured-project-preview" aria-label="Preview of Eric Reyna Insurance website">
-            <div className="browser-bar" aria-hidden="true">
-              <span></span><span></span><span></span>
-              <div className="browser-address">eric-reyna-insurance.netlify.app</div>
+const Home = () => (
+  <>
+    <Greeting />
+    <section className="home-featured-work" aria-labelledby="home-featured-title">
+      <div className="featured-project-heading reveal-up">
+        <div><p className="section-label">Featured business websites</p><h2 id="home-featured-title">Designed for real people, real brands, and real results.</h2></div>
+        <Link className="text-link" to="/work">View selected work →</Link>
+      </div>
+      <div className="home-work-grid">
+        {featured.map((project) => (
+          <article className={`home-work-card ${project.className}`} key={project.title}>
+            <div className="home-work-visual">{project.visual}</div>
+            <div className="home-work-body">
+              <p>{project.label}</p><h3>{project.title}</h3><span>{project.copy}</span>
+              <div className="home-work-actions"><a href={project.url} target="_blank" rel="noreferrer">Visit Site ↗</a><Link to="/work">View Case Study →</Link></div>
             </div>
-            <div className="insurance-preview-content">
-              <div className="insurance-preview-copy">
-                <span className="preview-kicker">Licensed Texas Life Insurance Agent</span>
-                <h3>Helping Families Protect What Matters Most</h3>
-                <p>Simple, honest, and pressure-free guidance designed around families, budgets, and long-term goals.</p>
-                <span className="preview-button">Start Your Quote</span>
-              </div>
-              <img src={insuranceHeadshot} alt="Eric Reyna in professional attire" />
-            </div>
-          </div>
-
-          <div className="featured-project-details">
-            <p className="featured-project-type">Business website • Lead generation • Responsive design</p>
-            <h3>Eric Reyna Insurance</h3>
-            <p>
-              I designed and built a complete client-facing insurance website that explains complex coverage in clear language,
-              establishes credibility, and guides visitors toward requesting a consultation.
-            </p>
-
-            <div className="featured-project-highlights">
-              <div><strong>Problem solved</strong><span>Turned complicated insurance information into a clear, approachable customer journey.</span></div>
-              <div><strong>Built for</strong><span>Mobile usability, trust, education, lead capture, and practical business growth.</span></div>
-            </div>
-
-            <div className="project-tech-list" aria-label="Project technologies and features">
-              <span>Responsive UI</span>
-              <span>JavaScript</span>
-              <span>Netlify</span>
-              <span>Forms</span>
-              <span>SEO Structure</span>
-            </div>
-
-            <div className="featured-project-actions">
-              <a className="btn-primary-custom" href="https://eric-reyna-insurance.netlify.app/" target="_blank" rel="noreferrer">Visit Live Website</a>
-              <Link className="btn-secondary-custom" to="/work">Explore More Work</Link>
-            </div>
-          </div>
-        </article>
-      </section>
-    </>
-  );
-};
+          </article>
+        ))}
+      </div>
+    </section>
+  </>
+);
 
 export default Home;

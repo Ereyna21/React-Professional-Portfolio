@@ -13,7 +13,7 @@ const strengths = [
 
 const milestones = [
   ['16+', 'Years of customer service and problem solving'],
-  ['Full-stack', 'Web development certificate'],
+  ['3', 'Live business websites deployed'],
   ['Licensed', 'Texas insurance professional'],
   ['Growing', 'IT, cloud, networking, and databases'],
 ];
